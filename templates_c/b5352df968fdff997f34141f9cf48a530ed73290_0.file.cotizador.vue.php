@@ -1,4 +1,27 @@
-{literal}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-06-19 23:26:05
+  from 'C:\xampp\htdocs\mavi\templates\vue\cotizador.vue' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_60ce60edcfd703_16376720',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'b5352df968fdff997f34141f9cf48a530ed73290' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\mavi\\templates\\vue\\cotizador.vue',
+      1 => 1624137807,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_60ce60edcfd703_16376720 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <section id='totalcotizacion'>
     <div v-show="visible==true" > 
         <h5 class="bg-ligth text-green py-2 text-center m-3" v-bind:id='arancel'> Estimador de Costos </h5>  
@@ -57,4 +80,5 @@
     
 </section>  
 
-{/literal}
+<?php }
+}

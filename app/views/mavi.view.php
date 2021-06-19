@@ -21,4 +21,5 @@ class MaviView {
     $smarty->display('./templates/prendario.tpl');
   }
 
+
 }

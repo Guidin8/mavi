@@ -32,6 +32,14 @@
                         <th scope="row">Recargo Pers. Juridica</th>
                         <td>{{persjur}}</td>
                     </tr>
+                    <tr v-if='rehabParaCirc!=0'>
+                        <th scope="row">Rehab. Para Circular</th>
+                        <td>{{rehabParaCirc}}</td>
+                    </tr>
+                    <tr v-if='moraCert!=0'>
+                        <th scope="row">Mora Cert. de Firma</th>
+                        <td>{{moraCert}}</td>
+                    </tr>
                     <tr v-if='arancelprenda!=0'>
                         <th scope="row">Arancel Prenda</th>
                         <td>{{arancelprenda}}</td>

@@ -2,7 +2,7 @@
  
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-include_once 'app/controllers/mavi.controller.php';
+include_once 'app/controllers/mavi-controller.php';
 //phpinfo();
 if (!empty($_GET['action'])) {
     $iniciar = $_GET['action'];
@@ -28,7 +28,7 @@ switch ($params[0]) {
     case 'bienesmueblesnoregistrables':
         $controller = new MaviController();
         $controller->showPrendario();
-    break;
+    break;   
     default:
         header("HTTP/1.0 404 Not Found");
         echo('404 Page not found');

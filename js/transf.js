@@ -1,23 +1,29 @@
 'use strict';
 document.addEventListener("DOMContentLoaded", inittransf());
-const titulo=300;
-const cedula=480;
-const certfirma=465;
-const certfirmapers=590;
-const persjur = 390;
-const condicionamiento = 190;
-
+const titulo=350;
+const cedula=560;
+const certfirma=540;
+const certfirmapers=680;
+const persjur = 450;
+const condicionamiento = 220;
+const minimoTTnacional=10200;
+const minimoTTimportado=12200;
+const rehabilitacion=580;
+const moraRehabi=580;//max 3
+const moraCertFirma=580;//maximo 2
 
 const cotizacion = new Vue({
     el:'#totalcotizaciontransferencia',
     data:{
         arancel: 0,
-        titulo:300,
-        cedula:480,
+        titulo:350,
+        cedula:560,
         certfirma:0,
         persjur:0,
         arancelprenda:0,
         condicionamiento:0,
+        rehabParaCirc:0,
+        moraCert:0,
         total:0,
         detraccion:0,
         visible:false,
@@ -40,6 +46,7 @@ function inittransf(){
     let divisa= document.querySelector('#divisafactura') ;
     let dolarenprenda= document.querySelector('#cotdolarenprenda');
     let prendadolar= document.querySelector('#divisaprenda');
+   
     calcfactdolar.setAttribute('hidden',true);
     tieneprenda.setAttribute('hidden',true);
     dolarenprenda.setAttribute('hidden',true);
@@ -144,13 +151,13 @@ function calculararancel(dolares,monto,divisa){
     cotizacion.detraccion=monto;
     if(nacional.value==='Nacional'){
         arancel=monto * 2.5 / 1000;
-        if(arancel<8835){
-            arancel=8835;
+        if(arancel<minimoTTnacional){
+            arancel=minimoTTnacional;
         }
     }else{
         arancel=monto * 5 / 1000;
-        if(arancel<10600){
-            arancel=10600;
+        if(arancel<minimoTTimportado){
+            arancel=minimoTTimportado;
         }
     }
     cotizacion.arancel= parseFloat(arancel.toFixed(2));
@@ -158,6 +165,8 @@ function calculararancel(dolares,monto,divisa){
 
 }
 function calculararancelVarios(){
+    let rehabCirc= document.querySelector('#rehabilitacion');
+    let moraCert= document.querySelector('#moraCertFirma');
     if (document.querySelector("#certfirma").checked==true){
         cotizacion.certfirma=certfirma;
     }
@@ -165,10 +174,19 @@ function calculararancelVarios(){
         cotizacion.persjur=persjur;
         cotizacion.certfirma=certfirmapers;
     }
+       
+    if (moraCert.value!='0'){
+        cotizacion.moraCert=parseInt(moraCert.value)*moraCertFirma;
+    }
+    if (rehabCirc.value!=='0'){
+        cotizacion.rehabParaCirc=rehabilitacion+(parseInt(rehabCirc.value)*rehabilitacion);
+
+    }
+
 }
 function calcularTotal(){
     let total=0;
-    total=cotizacion.arancel+cotizacion.titulo+cotizacion.cedula+cotizacion.certfirma+cotizacion.persjur+cotizacion.arancelprenda+cotizacion.condicionamiento;
+    total=cotizacion.arancel+cotizacion.titulo+cotizacion.cedula+cotizacion.certfirma+cotizacion.persjur+cotizacion.moraCert+cotizacion.rehabParaCirc+cotizacion.arancelprenda+cotizacion.condicionamiento;
     cotizacion.total=total;
 }
 

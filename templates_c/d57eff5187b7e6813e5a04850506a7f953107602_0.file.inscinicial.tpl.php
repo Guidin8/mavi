@@ -1,23 +1,46 @@
-{include 'header.tpl'}
-<div class="container" id='templatetransferencia'>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-06-19 22:51:06
+  from 'C:\xampp\htdocs\mavi\templates\inscinicial.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_60ce58bac2f575_83171420',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd57eff5187b7e6813e5a04850506a7f953107602' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\mavi\\templates\\inscinicial.tpl',
+      1 => 1608743001,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:vue/cotizador.vue' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_60ce58bac2f575_83171420 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+<div class="container" id='templatecotizacion'>
     <div class="alert alert-success" role="alert">
         
 
-        <h4 class="alert-heading">Estimador de Costo Transferencia</h4>
+        <h4 class="alert-heading">Estimador de Costo Inscripcion Inicial</h4>
         <hr>
         <form>
             <div class="row">
                 <div class="col-5">
                     <label for="formGroupExampleInput">Monto de la Factura</label>
-                    {* MONTO DE LA FACTURA *}
-                    <input class="form-control" type="number" placeholder="Monto de factura" id='montofact' required>            
-                    <p>Ingrese la fecha de la Inscripcion inicial</p>
-                    <input type="date" class='form-control date d-flex ' id="fecha" name="fecha" step="1" min="1989-01-01" max="2020-12-31" >
-                </div>
+                                        <input class="form-control" type="number" placeholder="Monto de factura" id='montofact' required>            
+                </div>  
                 <div class="form-group col-5">
                     <label for="inputState">Origen</label>
-                    {* NACIONAL O IMPORTADO *}
-                    <select id="nacimp" class="form-control">
+                                        <select id="nacimp" class="form-control">
                         <option selected>Nacional</option>
                         <option>Importada</option>
                     </select>
@@ -27,8 +50,7 @@
             <hr>
             <div class='row'>
                 <div class='col-3'>
-                    {* FACTURA EN PESOS O EN DOLARES *}
-                    <fieldset>
+                                        <fieldset>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="factpesos" value="divisa" checked>
                             <label class="form-check-label" for="divisa">
@@ -43,8 +65,7 @@
                         </div>
                     </fieldset>
                 </div>
-                {* MONTO DEL DOLAR EN FACTURA *}
-                <div class="col-5 ml-5" id='facturaendolares'>
+                                <div class="col-5 ml-5" id='facturaendolares'>
                     <label for="formGroupExampleInput">Monto del dolar del dia habil anterior al cargo</label>
                     <input class="form-control" type="number" placeholder="Monto del dolar"  id='divisafactura' required>            
                 </div> 
@@ -64,51 +85,29 @@
             </div>
             <div id="prendasi" type="hidden">
                 <div class="col-5 mt-3">
-                {* MONTO DE LA PRENDA *}
-                    <label for="formGroupExampleInput">Monto de la Prenda</label>
+                                    <label for="formGroupExampleInput">Monto de la Prenda</label>
                     <input class="form-control" type="number" placeholder="Monto de la Prenda" id='montoprenda' required>            
                 </div> 
                 
                 <div class="form-group col-5">
-                {* PRENDA EN DOLARES O PESOS *}
-                    <label for="inputState">Divisa</label>
+                                    <label for="inputState">Divisa</label>
                     <select id="divisaprenda" class="form-control">
                         <option selected>Pesos</option>
                         <option>Dolares</option>
                     </select>
                 </div>            
-                {* MONTO DEL DOLAR *}
-                <div class="col-5 ml-0" id='prendadolaress'>
+                                <div class="col-5 ml-0" id='prendadolaress'>
                     <label for="formGroupExampleInput" id='textcotdolarprenda'>Monto del dolar del dia habil anterior al cargo</label>
                     <input class="form-control" type="number" placeholder="Monto del dolar" id= 'cotdolarenprenda' required>            
                 </div> 
+                
+
+
                 <div class="form-check ml-3 mt-3">
                     <input class="form-check-input" type="checkbox" id="prendacondicionada" value="option3">
                     <label class="form-check-label" for="inlineCheckbox3">Prenda Condicionada</label>
                 </div>
             </div>
-            <hr>
-            <div classs="row">
-                <div class="col-3">
-                    {* Moras *}
-                        <label for="inputState">Mora Certificacion de Firma</label>
-                        <select id="moraCertFirma" class="form-control">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                </div> 
-                <div class="form-group col-3">
-                    {* Moras *}
-                        <label for="inputState">Rehabilitacion para circular</label>
-                        <select id="rehabilitacion" class="form-control">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                </div>
-            </div>    
             <hr>
             <button type='submit' class="btn btn-primary" id='calcular'>Calcular</button>
         </form>
@@ -116,7 +115,12 @@
     </div>
 </div>
 <div class='container'>
-    {include file='vue/cotizadortransf.vue'}
+    <?php $_smarty_tpl->_subTemplateRender('file:vue/cotizador.vue', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 </div>
-  <script type="text/javascript" src='js/transf.js'></script>
-{include 'footer.tpl'}
+  <?php echo '<script'; ?>
+ type="text/javascript" src='js/inscini.js'><?php echo '</script'; ?>
+>
+<?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

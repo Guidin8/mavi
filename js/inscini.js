@@ -1,20 +1,25 @@
 'use strict';
 document.addEventListener("DOMContentLoaded", initinscripcion());
-const titulo=300;
-const cedula=480;
-const certfirma=465;
-const certfirmapers=590;
-const persjur = 390;
-const condicionamiento = 190;
+const titulo=350;
+const cedula=560;
+const certFirma=540;
+const certFirmaPers=680;
+const persJur = 450;
+const envioLegajo=340;
+const condicionamiento = 220;
+const minimoIInacional=19300;
+const minimoIIimportado=25400;
+const placaMetalica=1500;
 
 
 const cotizacion = new Vue({
     el:'#totalcotizacion',
     data:{
         arancel: 0,
-        titulo:300,
-        cedula:480,
+        titulo:350,
+        cedula:560,
         certfirma:0,
+        placaMet:1500,
         persjur:0,
         arancelprenda:0,
         condicionamiento:0,
@@ -84,12 +89,12 @@ function initinscripcion(){
         }
         calculararancelVarios();
         calcularTotal();
-       /*  let imprime = document.querySelector('#imprimir');
+         let imprime = document.querySelector('#imprimir');
         imprime.addEventListener('click',function(e){
             e.preventDefault() ;
             let ficha = document.querySelector('#imprimirdetalle');
             imprimirdetal(ficha);
-        }); */
+        }); 
     });
 
 
@@ -130,15 +135,17 @@ function calculararancel(dolares,monto,divisa){
     }
     if(nacional.value==='Nacional'){
         arancel=monto * 2.5 / 1000;
-        if(arancel<16750){
-            arancel=16750;
+        if(arancel<minimoIInacional){
+            arancel=minimoIInacional;
         }
     }else{
         arancel=monto * 5 / 1000;
-        if(arancel<22085){
-            arancel=22085;
+        if(arancel<minimoIIimportado){
+            arancel=minimoIIimportado;
         }
     }
+
+
     cotizacion.arancel= parseFloat(arancel.toFixed(2));
     cotizacion.visible=true;
 
@@ -154,10 +161,9 @@ function calculararancelVarios(){
 }
 function calcularTotal(){
     let total=0;
-    total=cotizacion.arancel+cotizacion.titulo+cotizacion.cedula+cotizacion.certfirma+cotizacion.persjur+cotizacion.arancelprenda+cotizacion.condicionamiento;
+    total=cotizacion.arancel+cotizacion.titulo+cotizacion.cedula+cotizacion.placaMet+cotizacion.certfirma+cotizacion.persjur+cotizacion.arancelprenda+cotizacion.condicionamiento;
     cotizacion.total=total;
 }
-
 
 function imprimirdetal(ficha) {
     console.log(ficha);
